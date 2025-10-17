@@ -1,7 +1,9 @@
-  /* --- Reset Básico y Estilos Generales --- */
-        *{
-            scroll-behavior: smooth;
+
+        /* --- Reset Básico y Estilos Generales --- */
+        html {
+            scroll-behavior: smooth; /* Agregado para un desplazamiento suave */
         }
+        
         body, h1, h2, h3, p, ul, li {
             margin: 0;
             padding: 0;
@@ -10,10 +12,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
             color: #333;
-            display: flex;
-            min-height: 100vh;
+            background-color: #f4f7fc;
         }
 
         /* --- Estructura del Dashboard --- */
@@ -25,11 +25,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border-radius: 10px;
             overflow: hidden;
+            background-color: #ffffff;
         }
 
         /* --- Barra Lateral (Sidebar) --- */
         .sidebar {
             width: 260px;
+            flex-shrink: 0;
             background-color: #2c3e50;
             color: #ecf0f1;
             padding: 30px 20px;
@@ -47,7 +49,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid #033a5e;
+            border: 4px solid #033a5e; /* Cambio de color del borde */
             object-fit: cover;
             margin-bottom: 15px;
         }
@@ -65,6 +67,7 @@
 
         .nav-menu ul {
             list-style: none;
+            padding: 0;
             width: 100%;
         }
 
@@ -79,20 +82,23 @@
         }
 
         .nav-menu li a:hover, .nav-menu li a.active {
-            background-color: #5d97e3;
+            background-color: #5d97e3; /* Cambio de color del hover */
             padding-left: 25px;
         }
 
         /* --- Contenido Principal --- */
         .main-content {
             flex-grow: 1;
-            background-color: #ffffff;
             padding: 40px;
             overflow-y: auto;
         }
 
         .content-section {
             margin-bottom: 40px;
+        }
+
+        .content-section:last-of-type {
+            margin-bottom: 0;
         }
 
         .content-section h3 {
@@ -143,6 +149,7 @@
         .timeline-item h4 {
             font-size: 1.2em;
             color: #3498db;
+            margin-bottom: 5px;
         }
         
         .timeline-item .date {
@@ -158,7 +165,7 @@
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 15px;
         }
         
@@ -169,7 +176,22 @@
             border-radius: 8px;
             font-weight: 500;
         }
+        
+        /* --- Soft-Skills --- */
+        .softSkills {
+            margin-left: 3%; /* Agregado margen izquierdo */
+        }
+        
+        .softSkills ul {
+            list-style-type: '✓ ';
+            padding-left: 20px;
+        }
+        
+        .softSkills li {
+            padding: 5px 0;
+        }
 
+        /* --- Contacto --- */
         .contact-info p {
             margin-bottom: 10px;
         }
@@ -177,12 +199,81 @@
         .contact-info a {
             color: #3498db;
             text-decoration: none;
+            word-break: break-all;
         }
 
         .contact-info a:hover {
             text-decoration: underline;
         }
-    /*Soft-Skills*/
-        .softSkills {
-        margin-left:3%;
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin-bottom: 40px;
+        }
+        
+        /* ============================================== */
+        /* --- ESTILOS RESPONSIVE PARA MÓVILES --- */
+        /* ============================================== */
+        @media (max-width: 768px) {
+            body {
+                display: block; /* Cambiamos el display para móvil */
+            }
+            
+            .dashboard-container {
+                flex-direction: column;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .profile h1 {
+                font-size: 1.3em;
+            }
+
+            .nav-menu {
+                width: 100%;
+            }
+            
+            .nav-menu ul {
+                 display: flex;
+                 overflow-x: auto;
+                 padding-bottom: 10px;
+            }
+
+            .nav-menu li a {
+                padding: 10px 15px;
+                white-space: nowrap;
+                margin-right: 10px;
+                background-color: #34495e;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .content-section h3 {
+                font-size: 1.5em;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -25px;
+            }
         }
