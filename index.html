@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Israel</title>
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
     <div class="dashboard-container">
         <aside class="sidebar">
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <div class="profile">
                 <img src="./img/WhatsApp Image 2025-10-14 at 7.45.36 AM.jpeg" alt="Foto de Perfil" class="profile-img">
                 <h1>Israel Hernández</h1>
                 <h2>Desarrollador Web Junior</h2>
             </div>
             
-            <nav class="nav-menu">
+            <nav class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="#sobre-mi">Sobre Mí</a></li>
                     <li><a href="#experiencia">Experiencia</a></li>
@@ -99,6 +105,7 @@
             </section>
             
             <hr>
+
             <section id="proyectos" class="content-section">
                 <h3>💻 Proyectos personales</h3>
                 <div class="timeline">
@@ -106,7 +113,7 @@
                         <h4>Desarrollo de sitio web estático Mr-medicina</h4>
                         <p class="company">THE MONTECH</p>
                         <p>Pagina web estatica enfocada en la atraccion de clientes y visibilidad de negocio.</p>
-                        <p class="date">  <a href="https://mr-medicina.com/">https://mr-medicina.com/</a></p>
+                        <p class="date"><a href="https://mr-medicina.com/" target="_blank">https://mr-medicina.com/</a></p>
                     </div>
                     <div class="timeline-item">
                         <h4>Desarrollo de aplicación web de stock de medicamentos “BIOMEDICINE”</h4>
@@ -115,8 +122,11 @@
                     </div>
                 </div>
             </section>
+
+            <hr>
+
             <section id="competencias" class="content-section">
-                <h3>Soft-Skills</h3>
+                <h3>🏆 Soft-Skills</h3>
                 <div class="softSkills">
                    <ul>
                     <li>Comunicación efectiva</li>
@@ -128,12 +138,15 @@
                    </ul>
                 </div>
             </section>
+            
+            <hr>
+
             <section id="contacto" class="content-section">
                 <h3>📫 Contacto</h3>
                 <div class="contact-info">
-                    <p><strong>Email:</strong> <a href="mailto:bisrael240@gmail.com">bisrael240@gmail.com.com</a></p>
-                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/israel-hern%C3%A1ndez-san-juan-633062255/" target="_self">www.linkedin.com/in/israel-hernández-san-juan-633062255</a></p>
-                    <p><strong>GitHub:</strong> <a href="https://github.com/IsraelHer666" target="_self">https://github.com/IsraelHer666</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:bisrael240@gmail.com">bisrael240@gmail.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/israel-hern%C3%A1ndez-san-juan-633062255/" target="_blank">www.linkedin.com/in/israel-hernández-san-juan-633062255</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/IsraelHer666" target="_blank">https://github.com/IsraelHer666</a></p>
                     <p><strong>Ubicación:</strong> Ciudad de México, México</p>
                 </div>
             </section>
@@ -141,5 +154,26 @@
         </main>
     </div>
 
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('#nav-menu a');
+
+        // Evento para abrir/cerrar el menú con el botón
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            navMenu.classList.toggle('is-open');
+        });
+
+        // Evento para cerrar el menú al hacer clic en un enlace (mejora la experiencia de usuario)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('is-open')) {
+                    menuToggle.classList.remove('is-active');
+                    navMenu.classList.remove('is-open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

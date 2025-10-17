@@ -1,7 +1,6 @@
-
-        /* --- Reset Básico y Estilos Generales --- */
+/* --- Reset Básico y Estilos Generales --- */
         html {
-            scroll-behavior: smooth; /* Agregado para un desplazamiento suave */
+            scroll-behavior: smooth;
         }
         
         body, h1, h2, h3, p, ul, li {
@@ -38,6 +37,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative; /* Necesario para posicionar el botón de hamburguesa */
         }
 
         .profile {
@@ -49,7 +49,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 4px solid #033a5e; /* Cambio de color del borde */
+            border: 4px solid #033a5e;
             object-fit: cover;
             margin-bottom: 15px;
         }
@@ -63,6 +63,10 @@
             font-size: 1em;
             font-weight: 300;
             color: #bdc3c7;
+        }
+
+        .nav-menu {
+            width: 100%;
         }
 
         .nav-menu ul {
@@ -82,9 +86,44 @@
         }
 
         .nav-menu li a:hover, .nav-menu li a.active {
-            background-color: #5d97e3; /* Cambio de color del hover */
+            background-color: #5d97e3;
             padding-left: 25px;
         }
+        
+        /* --- Botón de Hamburguesa --- */
+        .menu-toggle {
+            display: none; /* Oculto en escritorio */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #ecf0f1;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Animación de la hamburguesa a "X" */
+        .menu-toggle.is-active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-toggle.is-active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.is-active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
 
         /* --- Contenido Principal --- */
         .main-content {
@@ -96,11 +135,12 @@
         .content-section {
             margin-bottom: 40px;
         }
-
+        
+        /* (El resto de tus estilos .content-section, .timeline, etc. van aquí sin cambios) */
+        
         .content-section:last-of-type {
             margin-bottom: 0;
         }
-
         .content-section h3 {
             font-size: 1.8em;
             color: #2c3e50;
@@ -108,17 +148,14 @@
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
         }
-        
         .content-section p {
             line-height: 1.7;
             color: #555;
         }
-        
         .timeline {
             position: relative;
             padding-left: 30px;
         }
-        
         .timeline::before {
             content: '';
             position: absolute;
@@ -128,12 +165,10 @@
             width: 2px;
             background-color: #dfe6e9;
         }
-        
         .timeline-item {
             margin-bottom: 30px;
             position: relative;
         }
-
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -145,30 +180,25 @@
             background-color: #3498db;
             border: 2px solid #fff;
         }
-        
         .timeline-item h4 {
             font-size: 1.2em;
             color: #3498db;
             margin-bottom: 5px;
         }
-        
         .timeline-item .date {
             font-size: 0.9em;
             color: #7f8c8d;
             margin-bottom: 5px;
         }
-
         .timeline-item .company {
             font-weight: bold;
             margin-bottom: 10px;
         }
-        
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 15px;
         }
-        
         .skill-item {
             background-color: #ecf0f1;
             padding: 12px;
@@ -176,36 +206,27 @@
             border-radius: 8px;
             font-weight: 500;
         }
-        
-        /* --- Soft-Skills --- */
         .softSkills {
-            margin-left: 3%; /* Agregado margen izquierdo */
+            margin-left: 3%;
         }
-        
         .softSkills ul {
             list-style-type: '✓ ';
             padding-left: 20px;
         }
-        
         .softSkills li {
             padding: 5px 0;
         }
-
-        /* --- Contacto --- */
         .contact-info p {
             margin-bottom: 10px;
         }
-
         .contact-info a {
             color: #3498db;
             text-decoration: none;
             word-break: break-all;
         }
-
         .contact-info a:hover {
             text-decoration: underline;
         }
-        
         hr {
             border: 0;
             height: 1px;
@@ -218,7 +239,7 @@
         /* ============================================== */
         @media (max-width: 768px) {
             body {
-                display: block; /* Cambiamos el display para móvil */
+                display: block;
             }
             
             .dashboard-container {
@@ -235,30 +256,47 @@
                 box-sizing: border-box;
             }
             
+            .profile {
+                /* Alineamos el perfil a la izquierda para dejar espacio al botón */
+                text-align: left;
+                align-self: flex-start;
+                margin-bottom: 20px;
+            }
+
             .profile-img {
-                width: 100px;
-                height: 100px;
+                width: 60px; /* Hacemos la imagen más pequeña */
+                height: 60px;
+                float: left; /* La flotamos a la izquierda */
+                margin-right: 15px;
             }
 
             .profile h1 {
-                font-size: 1.3em;
+                font-size: 1.2em;
+                padding-top: 5px;
+            }
+            .profile h2 {
+                font-size: 0.9em;
+            }
+
+            .menu-toggle {
+                display: block; /* Mostramos el botón en móvil */
             }
 
             .nav-menu {
                 width: 100%;
+                /* Lógica para ocultar/mostrar el menú con animación */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+                margin-top: 20px;
+            }
+            
+            .nav-menu.is-open {
+                max-height: 500px; /* Un valor suficientemente grande para que quepa el menú */
             }
             
             .nav-menu ul {
-                 display: flex;
-                 overflow-x: auto;
-                 padding-bottom: 10px;
-            }
-
-            .nav-menu li a {
-                padding: 10px 15px;
-                white-space: nowrap;
-                margin-right: 10px;
-                background-color: #34495e;
+                 flex-direction: column;
             }
 
             .main-content {
